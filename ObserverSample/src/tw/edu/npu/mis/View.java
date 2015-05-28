@@ -36,6 +36,12 @@ public class View {
     private final Window mWindow;
     private final Model mModel;
 
+    /**
+     * 建構值 上面的View
+     * @param name 要取的名子
+     * @param window 傳入這個叫Windows的類別
+     * @param model 傳入這個叫Model的類別
+     */
     public View(String name, Window window, Model model) {
         mName = name;
         mWindow = window;
@@ -43,6 +49,7 @@ public class View {
     }
 
     /**
+     * 加入排程
      * Invalidate the view, which indicates it needs to be redrawn later.
      */
     public void invalidate() {
@@ -50,6 +57,7 @@ public class View {
     }
 
     /**
+     * 把內容顯示出來
      * Show the content of the model on the console.
      */
     public void onDraw() {
