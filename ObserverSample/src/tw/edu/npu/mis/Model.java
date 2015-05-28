@@ -27,7 +27,7 @@ package tw.edu.npu.mis;
 
 /**
  * The domain model.
- *
+ *儲存屬性 mData
  * @author Samael Wang <freesamael@gmail.com>
  */
 public class Model {
@@ -36,7 +36,7 @@ public class Model {
 
     /**
      * Get model content.
-     *
+     *把內容傳送出去
      * @return {@link String}
      */
     public String getData() {
@@ -45,7 +45,6 @@ public class Model {
 
     /**
      * Update model.
-     *
      * @param data A {@link String} data.
      */
     public void setData(String data) {
