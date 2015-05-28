@@ -30,7 +30,9 @@ import java.util.List;
 
 /**
  * Simulate Window objects in GUI toolkits.
- *
+ *有類別Controller 和 陣列View
+ * 輸入方法startEventLoop 
+ * 加入排程schduleRedraw 
  * @author Samael Wang <freesamael@gmail.com>
  */
 public class Window {
@@ -40,7 +42,9 @@ public class Window {
 
     /**
      * Start the event loop.
-     *
+     *檢察controller 有無輸入
+     * 有輸入值　View 就顯示 
+     * 顯示之後 並歸還 空間 View
      * @param c The controller.
      * @param views The views to draw on the first loop.
      */
@@ -60,7 +64,7 @@ public class Window {
 
     /**
      * Add a view to a queue for redraw on screen later.
-     *
+     *加入排程
      * @param v View to redraw.
      */
     public void schduleRedraw(View v) {
