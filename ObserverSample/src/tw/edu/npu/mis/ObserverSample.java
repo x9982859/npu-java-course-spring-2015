@@ -30,7 +30,9 @@ import java.util.List;
 
 /**
  * Simulation of a GUI application.
- *
+ *建立類別 Window Model Controller 陣列類別 View
+ * 將View 加入 View 和 AlternatioveView
+ * 並開始做輸入值的偵測
  * @author Samael Wang <freesamael@gmail.com>
  */
 public class ObserverSample {
