@@ -31,7 +31,6 @@ import java.util.Scanner;
  * {@link Controller} retrieves inputs from the user.
  * 使用鍵盤傳入值
  * 類別 Model
- * @author Samael Wang <freesamael@gmail.com>
  */
 public class Controller {
 

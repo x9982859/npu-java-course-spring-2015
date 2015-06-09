@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Samael Wang <freesamael@gmail.com>
+ * Copyright (c) 2015, Ying Sheng
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,36 +30,35 @@ import java.util.List;
 
 /**
  *
+ * @author Ying Sheng
  */
-public class Window {
-
-    private Controller mController;
-    private List<Showable> mInvalidViews;
-    
-
+public class Subject {
+       List<Observer> observer = new ArrayList<>();
     /**
-    *
+     *  將ｏ加入 陣列Observer
      */
-    public void startEventLoop(Controller c, List<Showable> views) {
-        mController = c;
-        mInvalidViews = new ArrayList<>(views);
-
-        // Simulate how an event loop works.
-        while (true) {
-            mController.readInput();
-            for (Showable v : mInvalidViews) {
-                v.onDraw();
-            }
-            mInvalidViews.clear();
-        }
+    public void attach(Observer o)
+    {
+        observer.add(o);
     }
-
     /**
-     * Add a view to a queue for redraw on screen later.
+     * 將ｏ移除 陣列Observer 
      */
-    public void schduleRedraw(Showable s) {
-        if(!mInvalidViews.contains(s)){
-            mInvalidViews.add(s);
-        }
+    public void detach(Observer o)
+    {
+        observer.remove(o);
     }
+    /**
+     * 發送 更新 資料的訊號 
+     */
+    public void notifyObserver()
+    {
+       for(Observer o :observer)
+        {
+            o.upData();
+       
+        }
+     
+        
+    } 
 }

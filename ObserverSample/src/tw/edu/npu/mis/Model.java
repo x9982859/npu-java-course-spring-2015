@@ -28,9 +28,8 @@ package tw.edu.npu.mis;
 /**
  * The domain model.
  *儲存屬性 mData
- * @author Samael Wang <freesamael@gmail.com>
  */
-public class Model {
+public class Model extends Subject {
 
     private String mData;
 
@@ -49,6 +48,7 @@ public class Model {
      */
     public void setData(String data) {
         mData = data;
+        notifyObserver();
     }
 
 }

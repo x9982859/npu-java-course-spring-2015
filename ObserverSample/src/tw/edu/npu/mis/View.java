@@ -25,31 +25,26 @@
  */
 package tw.edu.npu.mis;
 
-/**
- * {@link View} generates outputs to the user.
- *
- * @author Samael Wang <freesamael@gmail.com>
- */
-public class View {
-
+    
+ 
+public class View implements Observer,Showable {
+     String s = "";
     private final String mName;
     private final Window mWindow;
     private final Model mModel;
-
-    /**
-     * 建構值 上面的View
-     * @param name 要取的名子
-     * @param window 傳入這個叫Windows的類別
-     * @param model 傳入這個叫Model的類別
-     */
+       
+  /**
+    * 得到 Model Window 方法 和 屬性 
+    * 把類別加入觀察者
+   */
     public View(String name, Window window, Model model) {
         mName = name;
         mWindow = window;
         mModel = model;
+        mModel.attach(this);
     }
 
     /**
-     * 加入排程
      * Invalidate the view, which indicates it needs to be redrawn later.
      */
     public void invalidate() {
@@ -57,11 +52,23 @@ public class View {
     }
 
     /**
-     * 把內容顯示出來
-     * Show the content of the model on the console.
+    *判斷是否跟上次 輸入的值一樣
      */
     public void onDraw() {
-        System.out.println("View (" + mName + "): " + mModel.getData());
+      if(!s.equals(mModel.getData())) System.out.println("View (" + mName + "): " + mModel.getData());   
+      s = mModel.getData();
     }
+/**
+ *  讓資料 顯示 過期
+ */
+
+    @Override
+    public void upData() {
+        invalidate();
+    }
+
+
+
+  
 
 }

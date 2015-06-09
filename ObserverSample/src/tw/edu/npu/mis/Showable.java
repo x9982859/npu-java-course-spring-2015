@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Samael Wang <freesamael@gmail.com>
+ * Copyright (c) 2015, Ying Sheng
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,41 +25,11 @@
  */
 package tw.edu.npu.mis;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  */
-public class Window {
+public interface Showable {
 
-    private Controller mController;
-    private List<Showable> mInvalidViews;
-    
+     void onDraw();
 
-    /**
-    *
-     */
-    public void startEventLoop(Controller c, List<Showable> views) {
-        mController = c;
-        mInvalidViews = new ArrayList<>(views);
-
-        // Simulate how an event loop works.
-        while (true) {
-            mController.readInput();
-            for (Showable v : mInvalidViews) {
-                v.onDraw();
-            }
-            mInvalidViews.clear();
-        }
-    }
-
-    /**
-     * Add a view to a queue for redraw on screen later.
-     */
-    public void schduleRedraw(Showable s) {
-        if(!mInvalidViews.contains(s)){
-            mInvalidViews.add(s);
-        }
-    }
 }

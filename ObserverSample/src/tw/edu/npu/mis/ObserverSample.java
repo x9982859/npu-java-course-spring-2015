@@ -29,11 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Simulation of a GUI application.
- *建立類別 Window Model Controller 陣列類別 View
- * 將View 加入 View 和 AlternatioveView
- * 並開始做輸入值的偵測
- * @author Samael Wang <freesamael@gmail.com>
+ *
  */
 public class ObserverSample {
 
@@ -42,11 +38,9 @@ public class ObserverSample {
         Window window = new Window();
         Model model = new Model();
         Controller controller = new Controller(model);
-        List<View> views = new ArrayList<>();
+        List<Showable> views = new ArrayList<>();
         views.add(new View("View 1", window, model));
-        views.add(new View("View 2", window, model));
-        views.add(new View("View 3", window, model));
-
+        views.add(new AlternationView("View 2", window, model));
         // Start the event loop.
         window.startEventLoop(controller, views);
     }

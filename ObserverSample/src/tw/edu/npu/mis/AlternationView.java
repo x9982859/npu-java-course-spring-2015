@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2015, Samael Wang <freesamael@gmail.com>
+ * Copyright (c) 2015, STP
  * All rights reserved.
- *
+ * 
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *
@@ -25,41 +25,52 @@
  */
 package tw.edu.npu.mis;
 
-import java.util.ArrayList;
-import java.util.List;
 
-/**
- *
- */
-public class Window {
 
-    private Controller mController;
-    private List<Showable> mInvalidViews;
+public class AlternationView implements Observer,Showable {
+     
+     private final String mName;
+     private final Window mWindow;
+     private final Model mModel;
+     String s = "" ;              //      
+
+     /**
+      *得到 Model Window 方法 和 屬性 
+    * 把類別加入觀察者
+      */
+    public AlternationView(String name, Window window, Model model) {
+        mName = name;
+        mWindow = window;
+        mModel = model;
+        mModel.attach(this);
+    }
+
+    /**
+     * Invalidate the view, which indicates it needs to be redrawn later.
+     */
+    public void invalidate() {
+        mWindow.schduleRedraw(this);
+      
+    }
+
+    /**
+     *判斷是否跟上次 輸入的值一樣
+     * 並且將資料 顯示顛倒
+     */
+    public void onDraw() {
+         
+      if(!s.equals(mModel.getData()) )System.out.println("View2 (" + mName + "): " + new StringBuilder(mModel.getData()).reverse());            
+      s = mModel.getData();          
     
-
-    /**
-    *
-     */
-    public void startEventLoop(Controller c, List<Showable> views) {
-        mController = c;
-        mInvalidViews = new ArrayList<>(views);
-
-        // Simulate how an event loop works.
-        while (true) {
-            mController.readInput();
-            for (Showable v : mInvalidViews) {
-                v.onDraw();
-            }
-            mInvalidViews.clear();
-        }
     }
+/**
+ *   讓資料 顯示 過期
+ */
 
-    /**
-     * Add a view to a queue for redraw on screen later.
-     */
-    public void schduleRedraw(Showable s) {
-        if(!mInvalidViews.contains(s)){
-            mInvalidViews.add(s);
-        }
+
+    @Override
+    public void upData() {
+        invalidate();
     }
-}
+  
+ }
