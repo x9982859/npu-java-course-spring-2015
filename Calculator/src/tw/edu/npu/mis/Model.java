@@ -13,7 +13,10 @@ public class Model extends java.util.Observable{
     private String Num1 = "", Num2 = "", cou = "",Mnum="0";
     
    
-    
+    /**
+     * 輸入數字
+     * @param digit 
+     */
     public void appendDigit(int digit) {
         // TODO code application logic here
         Num1 += String.valueOf(digit);
@@ -26,6 +29,10 @@ public class Model extends java.util.Observable{
         getDisplay();
         
     }
+    /**
+     * 算數邏輯的部分
+     * @param Str 
+     */
      public void count(String Str){
      switch(Str){
             case "+":
@@ -111,7 +118,9 @@ public class Model extends java.util.Observable{
             getDisplay();
      }
     
-    
+    /**
+     * 這是 = 的部分
+     */
     public void  compute()
     {
         if(Num1.equals("") || Num2.equals(""))return;
@@ -136,6 +145,9 @@ public class Model extends java.util.Observable{
         
     }
 
+    /**
+     * 顯示運算結果
+     */
     public void getDisplay() {
         // TODO code application logic here
         setChanged();

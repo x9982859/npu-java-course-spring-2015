@@ -11,8 +11,10 @@ package tw.edu.npu.mis;
 public class Calculator{
 
     /**
+     * 所有類別實作的部分
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
         // TODO code application logic here
         Model mModel = new Model();
